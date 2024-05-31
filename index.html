@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMuse</title>
+</head>
+
+<style>
+  C:\Users\HP\Desktop\FYM\TaskMuse
+  body{
+        background-color: #111827;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        width: auto;
+        color: #ffffff;
+    }
+    @font-face {
+      font-family: Monoton;
+      src: url(Monoton-Regular.ttf);
+    }
+    @font-face {
+      font-family: Montserrat;
+      src: url(Montserrat-VariableFont_wght.ttf);
+    }
+    .nav{
+      background-color: #ffffff00;
+ 
+
+    }
+    .navbar {
+      font-family: 'Monoton', sans-serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+     
+      padding: 10px 20px;
+      
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      color: #bbf7d0;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .nav-icon {
+      width: 3px;
+      height: 3px;
+      border-radius: 3px;
+      background-color: white;
+      margin: 1.5px 0;
+      
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      text-align: left;
+
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #bbf7d0;
+      font-size: 1rem;
+     
+    }
+  
+    
+    .nav-links {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 5em;
+  right: 2em; /* Align to the right */
+  background: #ffffff00;
+  width: auto;
+  z-index: 1;
+  border-radius: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  backdrop-filter: blur( 12px );
+   font-family: Montserrat;      
+  transition: all 1s ease-in-out;
+}
+
+.nav-link {
+  text-align: left; /* Align the text to the left */
+  left: 0;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-align: center; /* Align the text to the left */
+  padding: 10px; /* Add padding for better spacing */
+}
+      .nav-links.active {
+        display: flex;
+        
+     
+      }
+      .nav-toggle {
+        display: flex;
+      }
+    
+    
+    .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.material-symbols-outlined {
+  margin-right: 10px;
+}
+.va{
+      font-size: 0.3rem;
+    }
+    .taskCanvas{
+        background-color: #ffffff10;
+        min-height: 20em;
+        height: fit-content;
+        padding-bottom: 10px;
+        max-width: 30em;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 10vh;
+        backdrop-filter: blur( 100px );  
+        box-shadow:   10px 20px 30px  #ffffff41;
+        padding-left: 0;
+    }
+    input{
+      height: 2em;
+      min-width:25em ;
+      border-radius: 20px;
+      border-color: #ffffff;
+      padding-left: 20px;
+      background-color: #ffffff00;
+      color: white;
+      font-family: Montserrat;
+      margin-right: 5px;
+      margin-left: 10px;
+      margin-top: 8px;
+      margin-bottom: 5px;
+    }
+    .addbtn{
+     background-color: #111827;
+     height: 2em;
+     border-radius: 10px;
+     border-color: #ffffff;
+    font-family: Monoton;
+    color: #bbf7d0;
+    cursor: pointer;
+    }
+    .unchecked {
+      height: fit-content;
+      min-height: 2em;
+      width: 26em;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      font-family: Montserrat;
+      text-align: center;
+    
+      cursor: pointer;
+      position: relative;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     list-style: none;
+     padding-top: 1em;
+     padding-bottom:0.7em;
+    }
+  
+.listContainer  {
+      text-decoration: none;
+      list-style: none;
+    }
+
+ul .unchecked::before{
+  content: ' ';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: url(unchecked.png);
+  background-position: center;
+  background-size: cover;
+  left: 10px;
+  margin-top: 5px; 
+}
+ul .checked{
+  height: fit-content;
+      min-height: 2em;
+      width: 26em;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      font-family: Montserrat;
+      text-align: center;
+      padding-left: 0.3em;
+      padding-right: 0.3em;
+      padding-bottom: 0.3em;
+      padding-top: 0.3em;
+      cursor: pointer;
+      position: relative;
+ color: #555;
+ text-decoration: line-through;
+ margin-top: 10px;
+     margin-bottom: 10px; 
+     list-style: none;
+     padding-top: 1em;
+     padding-bottom: 0.7em;
+}
+ul .checked::before{
+  content: ' ';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: url(checked.png);
+  background-position: center;
+  background-size: cover;
+  left: 10px;
+  margin-top: 5px;
+  
+}
+.unchecked span{
+  position: absolute;
+  right: 0;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+ font-size: 30px;
+ line-height: 30px;
+ text-align: center;
+ margin-right: 10px;
+ margin-top: 12px;
+ border-radius: 50%;
+}
+.unchecked span:hover{
+background: red;
+
+}
+.srcCode{
+  text-decoration: none;
+  color:  #bbf7d0;
+}
+.menuBar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.menuBar:hover{
+  background-color: #5555555b;
+}
+
+
+  </style>
+
+<body>
+  <div class="div1">
+ 
+ 
+  <div class="nav">
+  <div class="navbar">
+    <div class="logo-text">TaskMuse</div>
+    <div class="nav-toggle" id="navToggle">
+      
+      <div class="menuBar">
+      <div class="nav-icon"></div>
+      <div class="nav-icon"></div>
+      <div class="nav-icon"></div>
+    </div>
+
+    </div>
+    <ul class="nav-links" id="navLinks">
+        
+         
+      <li><a  class="srcCode" href="">Source Code</a></li>
+      
+    </ul>
+  </div>
+  </div>
+</div>
+<div class="taskCanvas">
+  <div class="addTaskDiv">
+    <input  type="text" id="inputBox" placeholder="Add your Task" > <button class="addbtn" onclick="addTask()">Add Task</button>
+  </div>
+  <ul id="listContainer" >
+   
+  </ul>
+</div>
+</body>
+<script>
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
+<script src="script.js"></script>
+</html>
