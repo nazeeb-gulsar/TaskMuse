@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMuse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+
+<body>
+  <div class="div1">
+ 
+ 
+  <div class="nav">
+  <div class="navbar">
+    <div class="logo-text">TaskMuse</div>
+    <div class="nav-toggle" id="navToggle">
+      
+      <div class="menuBar">
+      <div class="nav-icon"></div>
+      <div class="nav-icon"></div>
+      <div class="nav-icon"></div>
+    </div>
+
+    </div>
+    <ul class="nav-links" id="navLinks">
+        
+         
+      <li><a  class="mnitem" href="">Source Code</a></li>
+      <li><a  class="mnitem" href="index.html">ToDo List</a></li>
+      
+    </ul>
+  </div>
+  </div>
+</div>
+<div class="timerBody">
+  <span id="timer">00:00:00</span>
+  <br>
+  <button  class="timerBtn" id="startStopBtn" onclick="startStopTimer()">Start</button>
+</div>
+
+<script>
+  const timerElement = document.getElementById('timer');
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+  let timerInterval;
+
+  function updateTimer() {
+    seconds++;
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+    }
+    if (minutes === 60) {
+      minutes = 0;
+      hours++;
+    }
+
+    timerElement.textContent = `${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+  }
+
+  function startStopTimer() {
+    const startStopBtn = document.getElementById('startStopBtn');
+    if (startStopBtn.textContent === 'Start') {
+      startStopBtn.textContent = 'Stop';
+      timerInterval = setInterval(updateTimer, 1000);
+    } else {
+      startStopBtn.textContent = 'Start';
+      clearInterval(timerInterval);
+    }
+  }
+</script>
+</body>
+<script>
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
+<script src="main.js"></script>
+</html>
